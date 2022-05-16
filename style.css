@@ -1,0 +1,46 @@
+/* Google font */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+:root {
+    --white: rgb(255, 255, 255);
+    --black: rgb(2, 0, 0);
+    --blue: rgb(1, 1, 227);
+    --light-blue: rgb(108, 108, 174);
+    --color-primary: #bb04ab;
+    --color-sec: #cf6f02;
+    --color-grey: rgb(246, 246, 246);
+    --color-dark-grey: #3e4550;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 1rem;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--light-blue);
+}
+
+p {
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+img {
+    width: 100%;
+}
+
+.container {
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
