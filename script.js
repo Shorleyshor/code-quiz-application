@@ -1,4 +1,4 @@
-//create a new quiz class
+//questions array
 let questions = [
     {
         numb: 1,
@@ -35,6 +35,11 @@ let questions = [
         options: ["lowerCase()", "toLowerCase()", "loCase()", "toLower()"]
     },
 ];
+
+//variable declarations//
+
+const scoreCounter = document.getElementById("score");
+var score = 0
 var startButton = document.querySelector(".start-button");
 var header = document.querySelector(".quiz-header");
 let questionEl = document.getElementById("question");
@@ -45,12 +50,22 @@ let button4 = document.getElementById("btn3");
 let questionNum = 0
 let progress = document.getElementById("progress");
 let countDown = document.getElementById("count-down");
-let timerCount = 60
+let timerCount = 60;
 let timerObject;
+const ul = document.querySelector(".ul");
+
+const ansDiv = document.querySelector(".buttons")
+//adding eventListeners to buttons
+
+button1.addEventListener("click", checkAns)
+button2.addEventListener("click", checkAns)
+button3.addEventListener("click", checkAns)
+button4.addEventListener("click", checkAns)
 header.style.display = "none"
 startButton.addEventListener("click", function(){
     header.style.display = "block" 
     startButton.style.display = "none"
+    ul.remove();
     timerObject = setInterval(function (){
         countDown.innerText = "timer" + timerCount
         if(timerCount > 0){
@@ -64,9 +79,38 @@ startButton.addEventListener("click", function(){
 // function to render questions on the page
 function questionDisplay(){
     questionEl.innerText = questions[questionNum].question
+    ansDiv.setAttribute('data-answer', questions[questionNum].answer)
     button1.innerText = questions[questionNum].options[0]
+    button1.setAttribute('data-Choice', questions[questionNum].options[0])
     button2.innerText = questions[questionNum].options[1]
+    button2.setAttribute('data-Choice', questions[questionNum].options[1])
     button3.innerText = questions[questionNum].options[2]
+    button3.setAttribute('data-Choice', questions[questionNum].options[2])
     button4.innerText = questions[questionNum].options[3]
-    progress.innerText = "progress" + questions[questionNum].numb + "/" + questions.length
+    button4.setAttribute('data-Choice', questions[questionNum].options[3])
+    progress.innerText = "progress" + questions[questionNum].numb + " out " + questions.length
+    ansDiv.addEventListener("click", checkAns);
 }
+
+function checkAns(event){
+    const currentTarget = event.currentTarget;
+    const target = event.target;
+if(target.matches("button")){
+    const userClick = target.getAttribute("data-Choice")
+    const correctAnswer = currentTarget.getAttribute("data-answer")
+    if(userClick === correctAnswer){
+        score+=10
+        scoreCounter.textContent = score
+    }else{
+        timerCount -= 5;
+    }
+    if(questionNum < questions.length - 1){
+        questionNum++
+        questionDisplay()
+    }else{
+        clearInterval(timerObject)
+    }
+}
+
+}
+   

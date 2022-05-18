@@ -11,14 +11,23 @@
     <div class="container">
         <div class="quiz-box">
             <div id="quiz">
-                <h1>JavaScript quiz App</h1>
+                <h1>Code quiz App</h1>
+                <ul class="ul">
+                    <li>You have 2 minutes to complete the quiz.</li>
+                    <li>Timer starts after you answer the first question.</li>
+                    <li>Every question you answer correctly gives you 10 seconds and for every wrong answers, 
+                        10 seconds will be deducted from the timer.</li>
+                    <li>Your scores is measured by the amount of seconds you have left after game is complete.</li>
+                    <li>The game is over after all questions are answered or when timer reaches 0.</li>
+                </ul>  
                 <button class="start-button">Start Button</button>
                 <div class="quiz-header">
                     <p id="progress">Question x of y</p>
-                    <p id="count-down">10</p>
+                    <p id="count-down"></p>
+                    <p id="score">0</p>
                 
                 <p id="question">What is your name?</p>
-                <div class="buttons">
+                <div class="buttons">   
                     <button class="btn" id="btn0">
                         A. <span id="choice0"></span>
                     </button>
